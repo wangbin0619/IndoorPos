@@ -4,7 +4,7 @@ This file contains project-specific local rules and guidelines for Claude Code w
 
 ## General Behavior Rules
 
-1. **Always Use Ultrathink Mode**: Always operate in "ultrathink" mode for this project
+1. **Always Use think Mode**: Always operate in "think" mode for this project
 2. **Windows 10 Commands First**: This is a Windows 10 based Claude Code environment, so always use corresponding Windows commands first before Linux commands
 
 ## Project Context Rules
