@@ -23,8 +23,12 @@ public class PosServerHandler extends ChannelHandlerAdapter {
         buf.readBytes(req);
         String str = new String(req, "UTF-8");
         //String str = (String) msg;
-        System.out.println(str);
     	Location loc = Server.dealer.getLocation(str);
+        if(loc != null) {
+            System.out.println("[Location: x=" + loc.getX() + ", y=" + loc.getY() + "] " + str);
+        } else {
+            System.out.println("[Location: unknown] " + str);
+        }
         if(loc!=null){
             Server.locs.put(loc);
         }

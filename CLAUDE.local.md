@@ -12,7 +12,7 @@ This file contains project-specific local rules and guidelines for Claude Code w
 1. **Java Version**: This project uses Java 1.7 compatibility - ensure all code follows Java 1.7 syntax and features
 2. **Maven Commands**: Always use Maven for build operations (`mvn compile`, `mvn package`, `mvn test`)
 3. **Database**: MySQL is used - refer to `src/wb_work/indoor_pos_database.sql` for schema
-4. **Main Server Port**: The positioning server runs on port 50006
+4. **Main Server Port**:[Server.java](src/main/java/org/hqu/indoor_pos/server/Server.java) The positioning server runs on port 50006
 5. **Display Server Port**: The display server runs on port 50005
 
 ## Code Style Rules
