@@ -20,12 +20,13 @@ public class PosClient {
 			        DataInputStream is = null;
 					try {  
 			            socket = new Socket("localhost", 50006);  
+			            os = new DataOutputStream(socket.getOutputStream());
 			            
 			            while(true){
 			            	
-			            	Thread.sleep(100);
-			            	os = new DataOutputStream(socket.getOutputStream()); 
+			            	Thread.sleep(100); 
 			            	os.write(("10001,-67;10001,-67;10001,-67;10004,-86;10001,-66;10001,-67;10003,-80;10002,-83;10001,-66;10001,-68;10001,-66;10001,-65;10004,-81;10001,-64;10003,-77;10002,-72;10001,-64;10001,-64;10001,-63;10001,-64;869511023026822"+"\n").getBytes());
+			            	os.flush();
 			            	//System.out.println(is.readUTF());
 			            	
 			            	

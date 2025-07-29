@@ -998,36 +998,422 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <collation id="287" parent="1" name="utf8mb4_zh_0900_as_cs">
       <Charset>utf8mb4</Charset>
     </collation>
-    <schema id="288" parent="1" name="information_schema">
+    <schema id="288" parent="1" name="indoor_pos">
+      <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
+      <LastIntrospectionLevel>3</LastIntrospectionLevel>
+      <LastIntrospectionLocalTimestamp>2025-07-29.11:00:11</LastIntrospectionLocalTimestamp>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </schema>
+    <schema id="289" parent="1" name="information_schema">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <schema id="289" parent="1" name="mysql">
+    <schema id="290" parent="1" name="mysql">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="290" parent="1" name="performance_schema">
+    <schema id="291" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="291" parent="1" name="sys">
+    <schema id="292" parent="1" name="sys">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <user id="292" parent="1" name="mysql.infoschema">
+    <user id="293" parent="1" name="mysql.infoschema">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="293" parent="1" name="mysql.session">
+    <user id="294" parent="1" name="mysql.session">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="294" parent="1" name="mysql.sys">
+    <user id="295" parent="1" name="mysql.sys">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="295" parent="1" name="root">
+    <user id="296" parent="1" name="root">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
+    <table id="297" parent="288" name="base_station">
+      <Comment>iBeacon base station coordinates and properties</Comment>
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="298" parent="288" name="employee">
+      <Comment>Employee information and terminal device mapping</Comment>
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="299" parent="288" name="env_factor">
+      <Comment>Environmental factors for RSSI signal propagation model</Comment>
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="300" parent="288" name="location">
+      <Comment>Historical positioning results</Comment>
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="301" parent="288" name="login">
+      <Comment>User authentication information</Comment>
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="302" parent="288" name="room">
+      <Comment>Room information and layout images</Comment>
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="303" parent="297" name="base_id">
+      <Comment>Base station identifier (iBeacon UUID)</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(50)|0s</StoredType>
+    </column>
+    <column id="304" parent="297" name="room_id">
+      <Comment>Room where base station is located</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="305" parent="297" name="x_axis">
+      <Comment>X coordinate of base station in meters</Comment>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="306" parent="297" name="y_axis">
+      <Comment>Y coordinate of base station in meters</Comment>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="307" parent="297" name="created_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <column id="308" parent="297" name="updated_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>6</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <foreign-key id="309" parent="297" name="base_station_ibfk_1">
+      <ColNames>room_id</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>room_id</RefColNames>
+      <RefTableName>room</RefTableName>
+    </foreign-key>
+    <index id="310" parent="297" name="PRIMARY">
+      <ColNames>base_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="311" parent="297" name="idx_room_id">
+      <ColNames>room_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="312" parent="297" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="313" parent="298" name="emp_id">
+      <Comment>Employee identifier</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(50)|0s</StoredType>
+    </column>
+    <column id="314" parent="298" name="name">
+      <Comment>Employee name</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(100)|0s</StoredType>
+    </column>
+    <column id="315" parent="298" name="sex">
+      <Comment>Employee gender (男/女)</Comment>
+      <Position>3</Position>
+      <StoredType>varchar(10)|0s</StoredType>
+    </column>
+    <column id="316" parent="298" name="terminal_id">
+      <Comment>Associated mobile terminal/device ID</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(50)|0s</StoredType>
+    </column>
+    <column id="317" parent="298" name="created_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <column id="318" parent="298" name="updated_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>6</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <index id="319" parent="298" name="PRIMARY">
+      <ColNames>emp_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="320" parent="298" name="terminal_id">
+      <ColNames>terminal_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="321" parent="298" name="idx_terminal_id">
+      <ColNames>terminal_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="322" parent="298" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="323" parent="298" name="terminal_id">
+      <UnderlyingIndexName>terminal_id</UnderlyingIndexName>
+    </key>
+    <column id="324" parent="299" name="room_id">
+      <Comment>Room identifier</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="325" parent="299" name="height">
+      <Comment>Height compensation value in meters</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="326" parent="299" name="atten_factor">
+      <Comment>Environmental attenuation factor (n value)</Comment>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="327" parent="299" name="p0">
+      <Comment>RSSI value received at 1 meter distance (dBm)</Comment>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="328" parent="299" name="created_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <column id="329" parent="299" name="updated_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>6</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <foreign-key id="330" parent="299" name="env_factor_ibfk_1">
+      <ColNames>room_id</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>room_id</RefColNames>
+      <RefTableName>room</RefTableName>
+    </foreign-key>
+    <index id="331" parent="299" name="PRIMARY">
+      <ColNames>room_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="332" parent="299" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="333" parent="300" name="id">
+      <AutoIncrement>7</AutoIncrement>
+      <Comment>Auto-increment primary key</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="334" parent="300" name="emp_id">
+      <Comment>Employee identifier</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(50)|0s</StoredType>
+    </column>
+    <column id="335" parent="300" name="room_id">
+      <Comment>Room where position was calculated</Comment>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="336" parent="300" name="x_axis">
+      <Comment>X coordinate of calculated position in meters</Comment>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="337" parent="300" name="y_axis">
+      <Comment>Y coordinate of calculated position in meters</Comment>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="338" parent="300" name="timestamp">
+      <Comment>Time when position was calculated</Comment>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <foreign-key id="339" parent="300" name="location_ibfk_1">
+      <ColNames>emp_id</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>emp_id</RefColNames>
+      <RefTableName>employee</RefTableName>
+    </foreign-key>
+    <foreign-key id="340" parent="300" name="location_ibfk_2">
+      <ColNames>room_id</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>room_id</RefColNames>
+      <RefTableName>room</RefTableName>
+    </foreign-key>
+    <index id="341" parent="300" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="342" parent="300" name="idx_emp_timestamp">
+      <ColNames>emp_id
+timestamp</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="343" parent="300" name="idx_emp_id">
+      <ColNames>emp_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="344" parent="300" name="idx_room_id">
+      <ColNames>room_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="345" parent="300" name="idx_timestamp">
+      <ColNames>timestamp</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="346" parent="300" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="347" parent="301" name="user_id">
+      <Comment>User identifier</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(50)|0s</StoredType>
+    </column>
+    <column id="348" parent="301" name="username">
+      <Comment>Login username</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(50)|0s</StoredType>
+    </column>
+    <column id="349" parent="301" name="password">
+      <Comment>Login password (should be hashed)</Comment>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>varchar(100)|0s</StoredType>
+    </column>
+    <column id="350" parent="301" name="role">
+      <Comment>User role/permissions (admin, user)</Comment>
+      <DefaultExpression>&apos;user&apos;</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>varchar(20)|0s</StoredType>
+    </column>
+    <column id="351" parent="301" name="created_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <column id="352" parent="301" name="updated_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>6</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <index id="353" parent="301" name="PRIMARY">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="354" parent="301" name="username">
+      <ColNames>username</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="355" parent="301" name="idx_username">
+      <ColNames>username</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="356" parent="301" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="357" parent="301" name="username">
+      <UnderlyingIndexName>username</UnderlyingIndexName>
+    </key>
+    <column id="358" parent="302" name="room_id">
+      <AutoIncrement>4</AutoIncrement>
+      <Comment>Room identifier</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="359" parent="302" name="room_name">
+      <Comment>Room name/description</Comment>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(100)|0s</StoredType>
+    </column>
+    <column id="360" parent="302" name="layout_image">
+      <Comment>Room layout image binary data</Comment>
+      <Position>3</Position>
+      <StoredType>longblob|0s</StoredType>
+    </column>
+    <column id="361" parent="302" name="pixels_per_m">
+      <Comment>Scale factor: pixels per meter for image coordinates</Comment>
+      <Position>4</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="362" parent="302" name="created_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <column id="363" parent="302" name="updated_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>6</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <index id="364" parent="302" name="PRIMARY">
+      <ColNames>room_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="365" parent="302" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

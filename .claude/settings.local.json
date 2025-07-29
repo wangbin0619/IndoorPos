@@ -25,7 +25,13 @@
       "Bash(where java)",
       "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p123456 -e \"USE indoor_pos; DESCRIBE env_factor;\")",
       "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p123456 -e \"USE indoor_pos; SELECT * FROM env_factor;\")",
-      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p123456 -e \"USE indoor_pos; SELECT * FROM base_station;\")"
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p123456 -e \"USE indoor_pos; SELECT * FROM base_station;\")",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(for file in src/test/java/org/hqu/indoor_pos/test/PosClient{4,5,6,7,8}.java)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(done)"
     ],
     "deny": []
   }
