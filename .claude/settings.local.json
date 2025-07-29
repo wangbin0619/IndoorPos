@@ -2,7 +2,19 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(java:*)",
+      "Bash(mysql:*)",
+      "Bash(where mysql)",
+      "Bash(winget search:*)",
+      "Bash(winget:*)",
+      "Bash(sc query:*)",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" --version)",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysqld.exe\" --install)",
+      "Bash(services.msc)",
+      "Bash(setx:*)",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p --execute=\"CREATE DATABASE IF NOT EXISTS indoor_pos; SHOW DATABASES;\")",
+      "Bash(powershell:*)"
     ],
     "deny": []
   }
