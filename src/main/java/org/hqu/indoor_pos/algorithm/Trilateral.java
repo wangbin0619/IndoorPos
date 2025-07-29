@@ -62,11 +62,21 @@ public class Trilateral implements Dealer{
 		
 		int j = 0;
 		
+		/*从第一个基站获取房间ID*/
+		Integer roomId = Server.roomIds.get(bases.get(0).getId());
+		if(roomId != null) {
+			location.setRoomId(roomId);
+		}
+		
 		/*得到环境影响因素的值*/
-		Double[] envFactors = Server.envFactors.get(location.getRoomId());
+		Double[] envFactors = Server.envFactors.get(roomId);
 		/*如果没有指定的环境因子,就用默认的*/
 		if(envFactors == null){
-			envFactors = Server.envFactors.get(0);
+			envFactors = Server.envFactors.get(1); // 默认使用房间1的环境因子
+		}
+		if(envFactors == null) {
+			// 如果还是找不到环境因子，使用默认值
+			return null;
 		}
 		double height = envFactors[0];
 		double n =  envFactors[1];

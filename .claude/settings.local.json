@@ -17,7 +17,15 @@
       "Bash(powershell:*)",
       "Bash(git push:*)",
       "Bash(del nul)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p --execute=\"source D:\\01\\ 本地-增量备份-天翼云\\A.1\\ 北航-Main\\11-科研项目\\01.01-IndoorPos\\src\\wb_work\\indoor_pos_database.sql\")",
+      "Bash(dir:*)",
+      "Bash(mvn:*)",
+      "Bash(where mvn)",
+      "Bash(where java)",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p123456 -e \"USE indoor_pos; DESCRIBE env_factor;\")",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p123456 -e \"USE indoor_pos; SELECT * FROM env_factor;\")",
+      "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p123456 -e \"USE indoor_pos; SELECT * FROM base_station;\")"
     ],
     "deny": []
   }
