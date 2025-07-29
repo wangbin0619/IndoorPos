@@ -15,7 +15,9 @@
       "Bash(setx:*)",
       "Bash(\"C:\\Program Files\\MySQL\\MySQL Server 8.4\\bin\\mysql.exe\" -u root -p --execute=\"CREATE DATABASE IF NOT EXISTS indoor_pos; SHOW DATABASES;\")",
       "Bash(powershell:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(del nul)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
